@@ -1,7 +1,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
-  <groupId>grTechno</groupId>
+  <groupId>com.safeYourStep</groupId>
   <artifactId>yourSafeStep</artifactId>
   <packaging>war</packaging>
   <version>0.0.1-SNAPSHOT</version>
@@ -81,11 +81,7 @@
 	    <version>2.3.3</version>
 	    <scope>provided</scope>
 	</dependency>
-	<!-- <dependency>
-	    <groupId>javax.servlet.jsp.jstl</groupId>
-	    <artifactId>jstl</artifactId>
-	    <version>1.2</version>
-	</dependency> -->
+
 	<dependency>
 	    <groupId>org.springframework.security</groupId>
 	    <artifactId>spring-security-taglibs</artifactId>
@@ -108,35 +104,37 @@
 	<!-- dependency for the hibernate starting -->
 	
 	<dependency>
-	    <groupId>org.hibernate.orm</groupId>
-	    <artifactId>hibernate-core</artifactId>
-	    <version>6.0.0.Alpha2</version>
-	</dependency>
-	<dependency>
-	    <groupId>org.hibernate</groupId>
-	    <artifactId>hibernate-entitymanager</artifactId>
-	    <version>5.1.4.Final</version>
-	</dependency>
-	<dependency>
-	    <groupId>org.hibernate</groupId>
-	    <artifactId>hibernate-ehcache</artifactId>
-	    <version>5.1.4.Final</version>
-	</dependency>
-	<dependency>
-	    <groupId>org.hibernate</groupId>
-	    <artifactId>hibernate-c3p0</artifactId>
-	    <version>5.1.4.Final</version>
-	</dependency>
+    <groupId>org.hibernate</groupId>
+    <artifactId>hibernate-core</artifactId>
+    <version>5.4.1.Final</version>
+</dependency>
+
+
 	<dependency>
 	    <groupId>mysql</groupId>
 	    <artifactId>mysql-connector-java</artifactId>
 	    <version>8.0.16</version>
 	</dependency>
-	
-	<!-- dependency for the hibernate ending -->
-		
+
   </dependencies>
   <build>
-    <finalName>yourSafeStep</finalName>
+    <finalName>your-Safe-Step</finalName>
+	<plugins>
+		<plugin>
+		<artifactId>maven-compiler-plugin</artifactId>
+		<version>3.5.1</version>
+		<configuration>
+		<source>1.8</source>
+		<target>1.8</target>
+		</configuration>
+		</plugin>
+		<plugin>
+		<artifactId>maven-war-plugin</artifactId>
+		<version>2.6</version>
+		<configuration>
+		<failOnMissingWebXml>false</failOnMissingWebXml>
+		</configuration>
+		</plugin>
+	</plugins>    
   </build>
 </project>
