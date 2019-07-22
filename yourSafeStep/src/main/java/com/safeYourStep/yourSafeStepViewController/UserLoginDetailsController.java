@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.safeYourStep.yourSafeStepDTO.UserGetInformationDTO;
 import com.safeYourStep.yourSafeStepDTO.UserSignUpDTO;
 import com.safeYourStep.yourSafeStepEntity.UserSignUpDetails;
 import com.safeYourStep.yourSafeStepService.UserLoginService;
@@ -37,7 +38,7 @@ public class UserLoginDetailsController {
 			userSignUpDetailsList = userLoginService.getUserLoginDetails();
 			for(UserSignUpDetails userList: userSignUpDetailsList) {
 				if(userList.getUserSignUpName().equals(userLoginName) && userList.getUserSignUpPassword().equals(userLoginPassword)) {
-					model.addObject("userSignUpDetailsList",userSignUpDetailsList);
+					model.addObject("userLoginName",userLoginName);
 					model.setViewName("showInformation");
 					break;
 				}else {
@@ -47,6 +48,17 @@ public class UserLoginDetailsController {
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
+		return model;
+	}
+	
+	
+	/**
+	 * this request mapping value will fetch the user get Information
+	 * 
+	 * **/
+	@RequestMapping(value ="/", method = RequestMethod.POST)
+	public ModelAndView getUserInformation(UserGetInformationDTO userGetInformationDTO, HttpServletRequest req) {
+		ModelAndView model = new ModelAndView();
 		return model;
 	}
 

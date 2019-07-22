@@ -20,6 +20,7 @@
 <div id="mainDiv" style="background-color:lightblue">
 	<h1 align="center" style="color: green">GR technoSoft</h1><br>
 	<div id="getUserInformationDiv" style="width: 300px; margin: 0 auto; padding: 10px;">
+	<h4>welcome</h4> ${userLoginName} 
 		<form name="getUserInformation">
 			<div>
 				<label for="userStartingPoint">Enter your Starting point</label>

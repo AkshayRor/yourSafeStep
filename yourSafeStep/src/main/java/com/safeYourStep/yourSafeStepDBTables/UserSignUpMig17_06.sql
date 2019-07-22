@@ -1,3 +1,5 @@
+DROP TABLE IF EXISTS `UserSignUpDetails`;
+
 Create table UserSignUpDetails(
 	`ID` bigint(20) NOT NULL AUTO_INCREMENT,
 	`User_SignUp_Name` varchar(50) default null,
