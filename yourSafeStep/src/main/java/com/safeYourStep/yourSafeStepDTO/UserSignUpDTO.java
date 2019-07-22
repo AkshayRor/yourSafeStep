@@ -10,6 +10,11 @@ public class UserSignUpDTO {
 	private String signUpPassword;
 	private String signUpCurrentCity;
 	
+	// DTO field for user login DETAILS
+	private String loginName;
+	private String loginPassword;
+	
+	
 	
 	public String getSignUpname() {
 		return signUpname;
@@ -40,6 +45,22 @@ public class UserSignUpDTO {
 	}
 	public void setSignUpCurrentCity(String signUpCurrentCity) {
 		this.signUpCurrentCity = signUpCurrentCity;
+	}
+	
+	
+	// GETTER AND SETTER METHOD FOR USER LOGIN DETAILS
+	
+	public String getLoginName() {
+		return loginName;
+	}
+	public void setLoginName(String loginName) {
+		this.loginName = loginName;
+	}
+	public String getLoginPassword() {
+		return loginPassword;
+	}
+	public void setLoginPassword(String loginPassword) {
+		this.loginPassword = loginPassword;
 	}
 	
 	

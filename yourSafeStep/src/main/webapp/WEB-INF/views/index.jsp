@@ -51,7 +51,7 @@
 	</div>
 	<div id="loginWraperDiv" Style="background-color:Tomato">
 	<div id="userLoginDiv"  style="width: 300px; margin: 0 auto; padding: 10px;">
-		<form>
+		<form action ="userLoginDetails" method = "POST">
 			<div>
 			<label for="userLoginName"> Enter Registered Name</label>
 			<input type="text" class="form-control" id="loginName" name="loginName"><br/>
@@ -63,7 +63,7 @@
 			</div>
 		
 			<div>
-			<button type="button" class="btn btn-success" onclick="saveUserSignUoInfo()">Login</button>
+			<button type="submit" class="btn btn-success" onclick="saveUserSignUoInfo()">Login</button>
 			</div>
 			</form>
 	</div>
@@ -78,12 +78,4 @@
 	
 </div>
 
-
-
-
-<script>
-	function saveUserSignUoInfo(){
-		alert();
-	}
-</script>
 

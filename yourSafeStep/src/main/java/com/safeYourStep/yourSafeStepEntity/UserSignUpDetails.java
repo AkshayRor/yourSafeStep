@@ -22,22 +22,22 @@ public class UserSignUpDetails {
 	@Column(name = "ID", nullable = false)
 	private Long id;
 	
-	@Column(name ="UserSignUpName")
+	@Column(name ="User_SignUp_Name")
 	private String userSignUpName;
 	
-	@Column(name = "UserSignUpEmailID")
+	@Column(name = "User_SignUp_EmailID")
 	private String userSignUpEmailID;
 	
-	@Column(name = "UserSignUpLocation")
+	@Column(name = "User_SignUp_Location")
 	private String userSignUpLocation;
 	
-	@Column(name = "UserSignUpPassword")
+	@Column(name = "User_SignUp_Password")
 	private String userSignUpPassword;
 	
-	@Column(name = "UserSignUpCurrentCity")
+	@Column(name = "User_SignUp_CurrentCity")
 	private String userSignUpCurrentCity;
 	
-	@Column(name = "CreatedDate")
+	@Column(name = "Created_Date")
 	private Date createdDate;
 
 	public Long getId() {
