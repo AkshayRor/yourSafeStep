@@ -56,9 +56,10 @@ public class UserLoginDetailsController {
 	 * this request mapping value will fetch the user get Information
 	 * 
 	 * **/
-	@RequestMapping(value ="/", method = RequestMethod.POST)
-	public ModelAndView getUserInformation(UserGetInformationDTO userGetInformationDTO, HttpServletRequest req) {
+	@RequestMapping(value ="/getUserInformation", method = RequestMethod.POST)
+	public ModelAndView getUserInformation(UserGetInformationDTO userGetInformationDTO, HttpServletRequest req, HttpServletResponse res) {
 		ModelAndView model = new ModelAndView();
+		
 		return model;
 	}
 

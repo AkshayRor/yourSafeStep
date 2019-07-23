@@ -21,7 +21,7 @@
 	<h1 align="center" style="color: green">GR technoSoft</h1><br>
 	<div id="getUserInformationDiv" style="width: 300px; margin: 0 auto; padding: 10px;">
 	<h4>welcome</h4> ${userLoginName} 
-		<form name="getUserInformation">
+		<form action = "getUserInformation" method = "POST">
 			<div>
 				<label for="userStartingPoint">Enter your Starting point</label>
 				<input type="text" class="form-control" id="userStartingPoint" name="userStartingPoint">
