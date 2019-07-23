@@ -18,18 +18,18 @@
 </style>
 
 
-
+<div class="container">
 <div id="mainDiv" style="background-color:lightblue"> 
 
 	<h1 align="center" style="color: green">GR technoSoft</h1>
-	<div id="signUpDiv" style="width: 300px; margin: 0 auto; padding: 10px;">
+	<div id="signUpDiv" class="col-md-6" style="background:#1abc9c; padding:15px">
 	 	<form action ="userSignUpDetails" method = "POST" >
-		 		<div>
+		 		<div class="pull-left">
 		 		<label for="userSignupName"> ENTER NAME</label> 
 		 		<input type="text" class="form-control" id="signUpname" name="signUpname"><br/>
 		 		</div>
 		 		
-		 		<div>
+		 		<div  class="pull-left">
 		 		<label for="userSignupEmailId">ENTER EMAIL-ID</label>
 		 		<input type="text" class="form-control" id="signUpemailId" name="signUpemailId"><br>
 		 		</div>
@@ -45,12 +45,12 @@
 		 		</div>
 		 		
 		 		<div>
-		 		<input type="submit" class="btn btn-success">Sign-Up
+		 		<button type="submit" class="btn btn-success">Sign-up</button>
 		 		</div>	
 	 	</form> 	
 	</div>
-	<div id="loginWraperDiv" Style="background-color:Tomato">
-	<div id="userLoginDiv"  style="width: 300px; margin: 0 auto; padding: 10px;">
+	<div id="loginWraperDiv"  class="col-md-6" style="background:#95a5a6; padding:15px;">
+	<div id="userLoginDiv">
 		<form action ="userLoginDetails" method = "POST">
 			<div>
 			<label for="userLoginName"> Enter Registered Name</label>
@@ -67,7 +67,8 @@
 			</div>
 			</form>
 	</div>
-	<div id="getInformationDiv" Style="background-color: grey">
+	</div>
+	<div id="getInformationDiv" Style="background-color: grey;  padding:15px;">
 	<div id="userGetInformation" Style="width: 300px; margin: 0 auto; padding: 10px;">
 		<div>
 		<button type="button" class="btn btn-info"><a href ="/getInformation">GET YOUR INFORMATION</a></button>
@@ -76,6 +77,42 @@
 	</div>
 	</div>
 	
+	<div id="userFeddbackInformation" style= "background-color: #3498db; padding: 15px">
+		<button type="submit" class="btn btn-success" id="userFeddbackInformationButton"> I want Share Information</button>
+	</div>
+	
+	<div id="shareUserInformation" style ="display: none;" >
+		<form>
+			<div>
+				<label for="userShareStartingPoint">Enter your Starting Point</label>
+				<input type="text" class="form-control" id = "userStartingPoint" name = "userStartingPoint">
+			</div>
+			
+			<div>
+				<label for = "userShareDestinationPoint">Enter your Destination Point</label>
+				<input type = "text" class="form-control" id = "userDestinationPoint" name="userDestinationPoint">
+			</div>
+			
+			<div>
+				<label for = "userShareTime">Enter your Journey Time</label>
+				<input type = "text" class = "form-control" id= "userJourneyTime" name = "userJourneyTime">
+			</div>
+			
+			<div>
+				<button type = "submit" class = "btn btn-success">Share your Experience</button>
+			</div>
+		</form>
+	</div>
+	
 </div>
 
 
+
+
+<script>
+		$(document).ready(function(){
+			$("#userFeddbackInformationButton").click(function(){
+				$("#shareUserInformation").show();
+			});
+		});
+</script>
