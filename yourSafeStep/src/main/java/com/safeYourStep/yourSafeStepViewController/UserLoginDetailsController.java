@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.safeYourStep.yourSafeStepDTO.UserGetInformationDTO;
@@ -71,6 +72,7 @@ public class UserLoginDetailsController {
 	}
 	
 	@RequestMapping(value = "/saveUserShareInfo", method = RequestMethod.POST)
+	@ResponseBody
 	public boolean saveUserShareInformation(UserShareInformationDTO userShareInformationDTO, HttpServletRequest req, HttpServletResponse res) {
 		boolean value = false;
 		UserMaintainData userMaintailData = new UserMaintainData();
@@ -86,9 +88,9 @@ public class UserLoginDetailsController {
 		Date date = new Date();
 		userMaintailData.setSubmitDate(date);
 		
-		// calling saving method to save user journey experience data
+		// calling saving service to save user journey experience data
 		userMaintailData = userSignUpService.saveUserJourneyExperience(userMaintailData);
-		if() {
+		if( userMaintailData != null) {
 			value = true;
 		}
 		return value;

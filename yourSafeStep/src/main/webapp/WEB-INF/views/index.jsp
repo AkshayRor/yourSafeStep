@@ -141,7 +141,7 @@
 		});
 		$.ajax({
 			type : form.attr('method'),   // method attribut of form
-			url : form.attr.('action'),   // action attribut of form
+			url : form.attr('action'),   // action attribut of form
 			dataType : 'json',
 			// convert form data to json format
 			data : JSON.Stringify(formData),
