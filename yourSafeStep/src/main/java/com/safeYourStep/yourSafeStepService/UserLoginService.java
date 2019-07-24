@@ -10,5 +10,5 @@ import com.safeYourStep.yourSafeStepEntity.UserSignUpDetails;
 public interface UserLoginService {
 	
 	public List<UserSignUpDetails> getUserLoginDetails();
-
+	
 }

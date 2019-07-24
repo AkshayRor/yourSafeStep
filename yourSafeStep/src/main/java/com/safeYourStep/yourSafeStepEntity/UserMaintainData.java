@@ -1,5 +1,7 @@
 package com.safeYourStep.yourSafeStepEntity;
 
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -8,8 +10,8 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "User_Manafement_Data")
-public class UserMaintailData {
+@Table(name = "User_Management_Data")
+public class UserMaintainData {
 	
 	private static final long serialVersionUID = 1L;
 	
@@ -26,6 +28,15 @@ public class UserMaintailData {
 	
 	@Column(name = "Safe_Time")
 	private String SafeTime;
+	
+	@Column(name = "Journey_Starting_Point")
+	private String JourneyStartingPoint;
+	
+	@Column(name = "Journey_Destination_Point")
+	private String JourneyDestinationPoint;
+	
+	@Column(name = "Submit_Date")
+	private Date SubmitDate;
 
 	public Long getId() {
 		return id;
@@ -62,6 +73,32 @@ public class UserMaintailData {
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
+
+	public String getJourneyStartingPoint() {
+		return JourneyStartingPoint;
+	}
+
+	public void setJourneyStartingPoint(String journeyStartingPoint) {
+		JourneyStartingPoint = journeyStartingPoint;
+	}
+
+	public String getJourneyDestinationPoint() {
+		return JourneyDestinationPoint;
+	}
+
+	public void setJourneyDestinationPoint(String journeyDestinationPoint) {
+		JourneyDestinationPoint = journeyDestinationPoint;
+	}
+
+	public Date getSubmitDate() {
+		return SubmitDate;
+	}
+
+	public void setSubmitDate(Date submitDate) {
+		SubmitDate = submitDate;
+	}
+	
+	
 	
 	
 

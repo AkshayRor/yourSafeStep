@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.safeYourStep.yourSafeStepDAO.UserSignUpDAO;
+import com.safeYourStep.yourSafeStepEntity.UserMaintainData;
 import com.safeYourStep.yourSafeStepEntity.UserSignUpDetails;
 import com.safeYourStep.yourSafeStepService.UserSignUpService;
 
@@ -17,6 +18,10 @@ public class UserSignUpDetaillsServiceImpl  implements UserSignUpService{
 	public UserSignUpDetails saveUserSignUpDetails(UserSignUpDetails userSignUpDetails) {
 		return userSignUpDAO.saveUserSignUpDetails(userSignUpDetails);
 	
+	}
+	
+	public UserMaintainData saveUserJourneyExperience(UserMaintainData userMaintainData) {
+		return userSignUpDAO.saveUserJourneyExperience(userMaintainData);
 	}
 
 }

@@ -7,6 +7,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.safeYourStep.yourSafeStepDAO.UserSignUpDAO;
+import com.safeYourStep.yourSafeStepEntity.UserMaintainData;
 import com.safeYourStep.yourSafeStepEntity.UserSignUpDetails;
 
 @Repository
@@ -24,6 +25,18 @@ SessionFactory sessionFactory;
 			e.printStackTrace();
 		}	
 		return userSignUpDetails;
+	}
+	
+	public UserMaintainData saveUserJourneyExperience(UserMaintainData userMaintainData) {
+		Session session = this.sessionFactory.getCurrentSession();
+		
+		try {
+			session.saveOrUpdate(userMaintainData);
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		
+		return userMaintainData;
 	}
 
 }

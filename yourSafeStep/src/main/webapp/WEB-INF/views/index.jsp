@@ -81,8 +81,8 @@
 		<button type="submit" class="btn btn-success" id="userFeddbackInformationButton"> I want Share Information</button>
 	</div>
 	
-	<div id="shareUserInformation" style ="display: none;" >
-		<form>
+	<div id="shareUserInformation" style ="display: none; background-color : lightblue; padding : 20px" >
+		<form id = "userShareInfo" method = "POST" , action = "saveUserShareInfo">
 			<div>
 				<label for="userShareStartingPoint">Enter your Starting Point</label>
 				<input type="text" class="form-control" id = "userStartingPoint" name = "userStartingPoint">
@@ -96,6 +96,16 @@
 			<div>
 				<label for = "userShareTime">Enter your Journey Time</label>
 				<input type = "text" class = "form-control" id= "userJourneyTime" name = "userJourneyTime">
+			</div>
+			
+			<div>
+				<label for = "userShareRating">Enter your Rating for your Journey</label>
+				<input type = "text" class = "form-control" id= "userSafeRating" name = "userSafeRating">
+			</div>
+			
+			<div>
+				<label for = "userShareDescription">Enter your Journey Description</label>
+				<input type = "text" class = "form-control" id= "userJourneyDescription" name = "userJourneyDescription"><br>
 			</div>
 			
 			<div>
@@ -115,4 +125,26 @@
 				$("#shareUserInformation").show();
 			});
 		});
+</script>
+
+<script>
+	$("#shareUserInformation").submit(function(e){
+		var form =  this;
+		e.preventDefault();
+		var formData = {};
+		// iterate over form element
+		$.each(this, function(i, v){
+			var input = $(v);
+			// populate form data as key-value pairs
+			// with the name of input as key and its value as value
+			formData[input.attr("name")] = input.val();
+		});
+		$.ajax({
+			type : form.attr('method'),   // method attribut of form
+			url : form.attr.('action'),   // action attribut of form
+			dataType : 'json',
+			// convert form data to json format
+			data : JSON.Stringify(formData),
+		});
+	});
 </script>

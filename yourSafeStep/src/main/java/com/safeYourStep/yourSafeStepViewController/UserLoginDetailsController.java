@@ -1,6 +1,7 @@
 package com.safeYourStep.yourSafeStepViewController;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -13,15 +14,21 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.safeYourStep.yourSafeStepDTO.UserGetInformationDTO;
+import com.safeYourStep.yourSafeStepDTO.UserShareInformationDTO;
 import com.safeYourStep.yourSafeStepDTO.UserSignUpDTO;
+import com.safeYourStep.yourSafeStepEntity.UserMaintainData;
 import com.safeYourStep.yourSafeStepEntity.UserSignUpDetails;
 import com.safeYourStep.yourSafeStepService.UserLoginService;
+import com.safeYourStep.yourSafeStepService.UserSignUpService;
 
 @Controller
 public class UserLoginDetailsController {
 	
 	@Autowired
 	UserLoginService userLoginService;
+	
+	@Autowired
+	UserSignUpService userSignUpService;
 	
 	/** 
 	 *  This request mapping value will fetch the user login details and 
@@ -61,6 +68,30 @@ public class UserLoginDetailsController {
 		ModelAndView model = new ModelAndView();
 		
 		return model;
+	}
+	
+	@RequestMapping(value = "/saveUserShareInfo", method = RequestMethod.POST)
+	public boolean saveUserShareInformation(UserShareInformationDTO userShareInformationDTO, HttpServletRequest req, HttpServletResponse res) {
+		boolean value = false;
+		UserMaintainData userMaintailData = new UserMaintainData();
+		
+		// setting all user share information in the userMaintain table
+		userMaintailData.setSafeTime(userShareInformationDTO.getUserJourneyTime());
+		userMaintailData.setJourneyStartingPoint(userShareInformationDTO.getUserStartingPoint());
+		userMaintailData.setJourneyDestinationPoint(userShareInformationDTO.getUserDestinationPoint());
+		userMaintailData.setDescription(userShareInformationDTO.getUserJourneyDescription());
+		userMaintailData.setSafeRating((long) userShareInformationDTO.getUserSafeRating());
+		
+		// getting the current date to set in the table
+		Date date = new Date();
+		userMaintailData.setSubmitDate(date);
+		
+		// calling saving method to save user journey experience data
+		userMaintailData = userSignUpService.saveUserJourneyExperience(userMaintailData);
+		if() {
+			value = true;
+		}
+		return value;
 	}
 
 }
