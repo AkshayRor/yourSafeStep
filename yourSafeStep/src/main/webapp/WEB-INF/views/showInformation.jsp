@@ -21,7 +21,7 @@
 	<h1 align="center" style="color: green">GR technoSoft</h1><br>
 	<div id="getUserInformationDiv" style="width: 300px; margin: 0 auto; padding: 10px;">
 	<h4>welcome</h4> ${userLoginName} 
-		<form action = "getUserInformation" method = "POST">
+		<form action = "getUserShareInformation" method = "POST">
 			<div>
 				<label for="userStartingPoint">Enter your Starting point</label>
 				<input type="text" class="form-control" id="userStartingPoint" name="userStartingPoint">
@@ -38,7 +38,7 @@
 			</div>
 			
 			<div>
-		 		<input type="submit" class="btn btn-info">Get-Record
+		 		<button type="submit" class="btn btn-info">Get-Record</button>
 		 	</div>
 		 		
 		</form>

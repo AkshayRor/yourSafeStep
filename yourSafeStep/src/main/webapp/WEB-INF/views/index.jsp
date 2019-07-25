@@ -82,7 +82,7 @@
 	</div>
 	
 	<div id="shareUserInformation" style ="display: none; background-color : lightblue; padding : 20px" >
-		<form id = "userShareInfo" method = "POST" , action = "saveUserShareInfo">
+		<form id = "userShareInfo" method = "POST" action = "saveUserShareInfo">
 			<div>
 				<label for="userShareStartingPoint">Enter your Starting Point</label>
 				<input type="text" class="form-control" id = "userStartingPoint" name = "userStartingPoint">
@@ -127,7 +127,7 @@
 		});
 </script>
 
-<script>
+<!-- <script>
 	$("#shareUserInformation").submit(function(e){
 		var form =  this;
 		e.preventDefault();
@@ -147,4 +147,4 @@
 			data : JSON.Stringify(formData),
 		});
 	});
-</script>
+</script> -->

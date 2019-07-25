@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.safeYourStep.yourSafeStepDAO.UserLoginDAO;
+import com.safeYourStep.yourSafeStepEntity.UserMaintainData;
 import com.safeYourStep.yourSafeStepEntity.UserSignUpDetails;
 import com.safeYourStep.yourSafeStepService.UserLoginService;
 
@@ -19,6 +20,11 @@ public class UserLoginServiceImpl implements UserLoginService{
 	
 	public List<UserSignUpDetails> getUserLoginDetails() {
 		return userLoginDAO.getUserLoginDetails();
+	}
+	
+	public List<UserMaintainData> getUserSharedInformationBasedOnStaringAndDestination(String startingPoint, String DestinationPoint) {
+		
+		return userLoginDAO.getUserSharedInformationBasedOnStaringAndDestination(startingPoint, DestinationPoint);
 	}
 
 }

@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.safeYourStep.yourSafeStepDAO.UserLoginDAO;
+import com.safeYourStep.yourSafeStepEntity.UserMaintainData;
 import com.safeYourStep.yourSafeStepEntity.UserSignUpDetails;
 import com.safeYourStep.yourSafeStepViewController.UserLoginDetailsController;
 
@@ -37,6 +38,20 @@ public class UserLoginDaoImpl implements UserLoginDAO {
 		return userSignUpDetailsList;
 	}
 	
+	
+	@Override
+	public List<UserMaintainData> getUserSharedInformationBasedOnStaringAndDestination(String startingPoint, String DestinationPoint){
+		
+		Session session = this.sessionFactory.getCurrentSession();
+		List<UserMaintainData> userMaintainData = new ArrayList<UserMaintainData>();
+		try {
+			String query = "from UserMaintainData umtd where umtd.JourneyStartingPoint and  umtd.JourneyDestinationPoint";
+			session.createQuery(query).list();
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		return userMaintainData;
+	}
 	
 
 }

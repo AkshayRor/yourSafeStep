@@ -72,9 +72,8 @@ public class UserLoginDetailsController {
 	}
 	
 	@RequestMapping(value = "/saveUserShareInfo", method = RequestMethod.POST)
-	@ResponseBody
-	public boolean saveUserShareInformation(UserShareInformationDTO userShareInformationDTO, HttpServletRequest req, HttpServletResponse res) {
-		boolean value = false;
+	public ModelAndView saveUserShareInformation(UserShareInformationDTO userShareInformationDTO, HttpServletRequest req, HttpServletResponse res) {
+		ModelAndView model = new ModelAndView();
 		UserMaintainData userMaintailData = new UserMaintainData();
 		
 		// setting all user share information in the userMaintain table
@@ -90,10 +89,8 @@ public class UserLoginDetailsController {
 		
 		// calling saving service to save user journey experience data
 		userMaintailData = userSignUpService.saveUserJourneyExperience(userMaintailData);
-		if( userMaintailData != null) {
-			value = true;
-		}
-		return value;
+		model.setViewName("index");
+		return model;
 	}
 
 }
