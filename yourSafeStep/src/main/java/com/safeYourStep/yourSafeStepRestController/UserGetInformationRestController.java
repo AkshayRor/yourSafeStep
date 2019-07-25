@@ -1,5 +1,8 @@
 package com.safeYourStep.yourSafeStepRestController;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -10,6 +13,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.safeYourStep.yourSafeStepDTO.UserGetInformationDTO;
+import com.safeYourStep.yourSafeStepEntity.UserMaintainData;
 import com.safeYourStep.yourSafeStepService.UserLoginService;
 
 @RestController
@@ -19,12 +23,18 @@ public class UserGetInformationRestController {
 	UserLoginService userLoginService;
 
 	
-	@RequestMapping(value = "/getUserShareInformation", method = RequestMethod.POST)
+	@RequestMapping(value = "/getUserShareInformation", method = RequestMethod.GET)
 	public boolean getUserInformation(UserGetInformationDTO userGetInformationDTO, HttpServletRequest req, HttpServletResponse res) {
 		boolean value = false;
 		String startingPoint    = userGetInformationDTO.getUserStartingPoint();
 		String DestinationPoint = userGetInformationDTO.getUserDestinationPoint(); 
-		userLoginService.getUserSharedInformationBasedOnStaringAndDestination(startingPoint, DestinationPoint);
+		
+		// creating object of the userManagement table
+		List<UserMaintainData> UserMaintainData = new ArrayList<UserMaintainData>(); 
+		UserMaintainData = userLoginService.getUserSharedInformationBasedOnStaringAndDestination(startingPoint, DestinationPoint);
+		if(UserMaintainData != null) {
+			value = true;
+		}
 		return value;
 	}
 }

@@ -39,14 +39,15 @@ public class UserLoginDaoImpl implements UserLoginDAO {
 	}
 	
 	
+	@SuppressWarnings("deprecation")
 	@Override
 	public List<UserMaintainData> getUserSharedInformationBasedOnStaringAndDestination(String startingPoint, String DestinationPoint){
 		
 		Session session = this.sessionFactory.getCurrentSession();
 		List<UserMaintainData> userMaintainData = new ArrayList<UserMaintainData>();
 		try {
-			String query = "from UserMaintainData umtd where umtd.JourneyStartingPoint and  umtd.JourneyDestinationPoint";
-			session.createQuery(query).list();
+			String query = "from UserMaintainData umtd where umtd.JourneyStartingPoint =: startingPoint and  umtd.JourneyDestinationPoint =: DestinationPoint";
+			userMaintainData = session.createQuery(query).setString("startingPoint", startingPoint).setString("DestinationPoint", DestinationPoint).list();
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
