@@ -48,12 +48,21 @@
 </div>
 
 
+<div class="require_wrap_table datatable_filter">
+<h5 id="uploadXlsHistoryDivTitle" style="display: none;">Information</h5>
+<div id="showinformationDiv"></div>
+</div>
+
+<!-- <script type="text/javascript">
+	$(document).ready(function() {
+		$("#informationDiv").hide();
+	});	
+</script> -->
+
 <script>
 	$("#userGetInfoFormDiv").submit(function(e){
 		alert();
 		var form = $("#userGetInfoForm");
-		
-		
 		var unindexed_array = $(form).serializeArray();
 		var formData = new FormData();
 		$.map(unindexed_array, function (n, i) {
@@ -62,32 +71,54 @@
 			else if(n['name'])
 				formData.append(n['name'], n['value']);
 		});
-		
-/* 		e.preventDefault();
-		var formData = {};
-		// iterate over form element
-		$.each(this, function(i ,v){
-			var input = $(v);
-			alert("input========"+input.attr("name"));
-			// populate form data as key-value pairs
-			// with the name of input as key and its value as value
-			formData[input.attr("name")] = input.val();
-			alert(formData);
-		}); */
 		$.ajax({
 			type : form.attr('method'),  // method attribut of form
 			url  : form.attr('action'),  // action attribut of form
 			dataType : 'json',
 			// convert form data to json format
 			data : JSON.Stringify(formData),
+			success: function(json) {	
+				alert("hi"+json.JourneyStartingPoint);
+					showInfoDetails(json);
+					alert("bye");
+			} 
 		});
-		success: function (data) {
-			if(data.response == "SUCCESS"){
-				getRecord();
-			}else{
-				location.href = "/errorPage";
-			}
-			
-		} 
+		
 	});
+</script>
+
+
+<script>
+function showInfoDetails(json){
+	
+	alert("inside function");
+	
+	$("#showinformationDiv").empty();
+	var result = "";
+	result = result +"<table id= 'showInfo' class='display' cellspacing='0' width='100%' >";
+	result = result +"<thead>";
+	result = result +"<tr>";
+	result = result +'<th>Starting Point</th>';
+	result = result +'<th>Ending Point</th>';
+	result = result +'<th>Journey Time</th>';
+	result = result +'<th>Description</th>';
+	result = result +'<th>Journey Rating</th>';
+	result = result +"</tr>";
+	result = result +"</thead>";
+	result = result +"<tbody>";
+	
+	for(var i=0; i<json.length; i++){
+		var opt = json[i];
+		result = result +'<tr>';
+		result = result + '<td>'+opt.JourneyStartingPoint'</td>';
+		result = result + '<td>'+opt.JourneyDestinationPoint'</td>';
+		result = result + '<td>'+opt.SafeTime'</td>';
+		result = result + '<td>'+opt.Description'</td>';
+		result = result + '<td>'+opt.SafeRating'</td>';
+		result = result +'</tr>';
+	}
+	result = result +"</tbody>";
+	result = result +"</table>";
+	$("#showinformationDiv").append(result);
+}
 </script>

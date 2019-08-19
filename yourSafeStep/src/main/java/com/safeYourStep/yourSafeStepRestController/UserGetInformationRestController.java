@@ -24,17 +24,13 @@ public class UserGetInformationRestController {
 
 	
 	@RequestMapping(value = "/getUserShareInformation", method = RequestMethod.GET)
-	public boolean getUserInformation(UserGetInformationDTO userGetInformationDTO, HttpServletRequest req, HttpServletResponse res) {
-		boolean value = false;
+	public List<UserMaintainData> getUserInformation(UserGetInformationDTO userGetInformationDTO, HttpServletRequest req, HttpServletResponse res) {
 		String startingPoint    = userGetInformationDTO.getUserStartingPoint();
 		String DestinationPoint = userGetInformationDTO.getUserDestinationPoint(); 
 		
 		// creating object of the userManagement table
 		List<UserMaintainData> UserMaintainData = new ArrayList<UserMaintainData>(); 
 		UserMaintainData = userLoginService.getUserSharedInformationBasedOnStaringAndDestination(startingPoint, DestinationPoint);
-		if(UserMaintainData != null) {
-			value = true;
-		}
-		return value;
+			return UserMaintainData;
 	}
 }

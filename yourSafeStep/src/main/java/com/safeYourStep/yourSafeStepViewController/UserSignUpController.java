@@ -22,7 +22,7 @@ import com.safeYourStep.yourSafeStepService.UserSignUpService;
 public class UserSignUpController {
 	
 	@Autowired
-	UserSignUpService userSignUpService;
+	UserSignUpService userSignUpService ;
 	
 	@RequestMapping(value ="/", method = RequestMethod.GET)
 	public ModelAndView homePage(HttpServletRequest request) {
