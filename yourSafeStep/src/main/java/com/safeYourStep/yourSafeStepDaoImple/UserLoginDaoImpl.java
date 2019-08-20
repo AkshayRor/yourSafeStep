@@ -39,7 +39,7 @@ public class UserLoginDaoImpl implements UserLoginDAO {
 	}
 	
 	
-	@SuppressWarnings("deprecation")
+	@SuppressWarnings({ "deprecation", "unchecked" })
 	@Override
 	public List<UserMaintainData> getUserSharedInformationBasedOnStaringAndDestination(String startingPoint, String DestinationPoint){
 		

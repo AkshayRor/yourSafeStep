@@ -1,13 +1,13 @@
 <%@ taglib uri="http://www.springframework.org/security/tags" prefix="security" %>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css"> 
-
-
 <!-- jQuery library -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+
 
 
 <style>
@@ -22,7 +22,7 @@
 	<div id="getUserInformationDiv" style="width: 300px; margin: 0 auto; padding: 10px;">
 	<h4>welcome</h4> ${userLoginName}
 	<div id = "userGetInfoFormDiv"> 
-		<form action = "getUserShareInformation" method = "GET" id ="userGetInfoForm">
+		<form  method = "GET" id ="userGetInfoForm">
 			<div>
 				<label for="userStartingPoint">Enter your Starting point</label>
 				<input type="text" class="form-control" id="userStartingPoint" name="userStartingPoint">
@@ -39,7 +39,7 @@
 			</div>
 			
 			<div>
-		 		<button type="submit" class="btn btn-info">Get-Record</button>
+		 		<button type="submit" class="btn btn-info" onclick="getResult();">Get-Record</button>
 		 	</div>
 		 		
 		</form>
@@ -50,15 +50,70 @@
 
 <div class="require_wrap_table datatable_filter">
 <h5 id="uploadXlsHistoryDivTitle" style="display: none;">Information</h5>
+
+
+
+
+
+	<%-- <table id= 'showInfo' class='display' cellspacing='0' width='100%' >
+	<thead>
+	<tr>
+	<th>Starting Point</th>
+	<th>Ending Point</th>
+	<th>Journey Time</th>
+	<th>Description</th>
+	<th>Journey Rating</th>
+	</tr>
+	</thead>
+	<tbody>
+	
+	    <c:forEach var="item" items="${userMaintainData}">
+	    <tr>
+	    <td>item.JourneyStartingPoint</td>
+		<td>item.JourneyDestinationPoint</td>
+		<td>item.SafeTime</td>
+		<td>item.Description</td>
+		<td>item.SafeRating</td>
+		</tr>
+	    
+	    </c:forEach>
+		
+		
+	</tbody>
+	</table> --%>
+	
 <div id="showinformationDiv"></div>
 </div>
+
+<script>
+function getResult(){
+	var host = "localhost:8085";
+	var formData = {};
+	var startPoint  = $("#userStartingPoint").val();
+	var destPoint  = $("#userDestinationPoint").val();
+	var time = $("#userJourneyTime").val();
+	formData["userStartingPoint"] = startPoint;
+	formData["userDestinationPoint"] = destPoint;
+	formData["userJourneyTime"] = time;
+	
+	$.ajax({
+		type: "POST",
+		data: formData,
+		url : "/getUserShareInformation",
+		success : function(data) {
+		alert("length >>>")	
+		}
+	});
+}
+
+</script>
 
 <!-- <script type="text/javascript">
 	$(document).ready(function() {
 		$("#informationDiv").hide();
 	});	
 </script> -->
-
+<!-- 
 <script>
 	$("#userGetInfoFormDiv").submit(function(e){
 		alert();
@@ -85,10 +140,10 @@
 		});
 		
 	});
-</script>
+</script> -->
 
 
-<script>
+<!-- <script>
 function showInfoDetails(json){
 	
 	alert("inside function");
@@ -121,4 +176,4 @@ function showInfoDetails(json){
 	result = result +"</table>";
 	$("#showinformationDiv").append(result);
 }
-</script>
+</script> -->
